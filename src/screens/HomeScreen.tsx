@@ -4,8 +4,9 @@ import { IconSvgPlus } from "../assets/icons/IconSvgPlus";
 import { IconSvgFavourite } from "../assets/icons/IconSvgFavourite";
 import { IconSvgMessenger } from "../assets/icons/IconSvgMessenger";
 import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
-import { AgEnum, Text } from "../components/Text";
+import { AgEnum, Text } from "../components/ui/Text";
 import { TextHelper } from "../helpers/TextHelper";
+import { PostCard } from "../components/PostCard";
 
 export const HomeScreen = () => {
   return (
@@ -32,10 +33,13 @@ export const HomeScreen = () => {
                 <Image style={styles.history}
                        source={{ uri: "https://pbs.twimg.com/profile_images/1498641868397191170/6qW2XkuI_400x400.png" }} />
               </TouchableOpacity>
-              <Text Ag={AgEnum.SUBTITLE}>{ TextHelper.getUserHistoryName("salauyou_kiryl") + '..'}</Text>
+              <Text Ag={AgEnum.SUBTITLE}>{TextHelper.getUserHistoryName("salauyou_kiryl") + ".."}</Text>
             </View>
           ))}
         </ScrollView>
+        {[...Array(10)].map((_, index) => (
+          <PostCard key={index} />
+        ))}
       </ScrollView>
     </>
   );
