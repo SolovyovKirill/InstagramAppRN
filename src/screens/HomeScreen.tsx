@@ -7,6 +7,10 @@ import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-nat
 import { AgEnum, Text } from "../components/ui/Text";
 import { TextHelper } from "../helpers/TextHelper";
 import { PostCard } from "../components/PostCard";
+import { HistoryData } from "../store/HistoryData";
+import { Colors } from "../styles/Colors";
+import { HistoryHelper } from "../helpers/HistoryHelper";
+import { IHistory } from "../types/HistoryTypes";
 
 export const HomeScreen = () => {
   return (
@@ -27,13 +31,14 @@ export const HomeScreen = () => {
       </View>
       <ScrollView>
         <ScrollView style={{ marginTop: 12 }} horizontal={true} showsHorizontalScrollIndicator={false}>
-          {[...Array(10)].map((_, index) => (
-            <View style={[styles.historyItemContainer, index === 0 && { marginLeft: 8 }]} key={index}>
-              <TouchableOpacity style={styles.historyItem}>
+          {HistoryHelper.getHistory(HistoryData).map((item: IHistory, index) => (
+            <View style={[styles.historyItemContainer, index === 0 && { marginLeft: 8 }]} key={item.id}>
+              <TouchableOpacity
+                style={[styles.historyItem, item.active ? styles.historyItemActive : styles.historyItemNotActive]}>
                 <Image style={styles.history}
-                       source={{ uri: "https://pbs.twimg.com/profile_images/1498641868397191170/6qW2XkuI_400x400.png" }} />
+                       source={{ uri: item.avatar }} />
               </TouchableOpacity>
-              <Text Ag={AgEnum.SUBTITLE}>{TextHelper.getUserHistoryName("salauyou_kiryl") + ".."}</Text>
+              <Text Ag={AgEnum.SUBTITLE}>{TextHelper.getUserHistoryName(item.name) + ".."}</Text>
             </View>
           ))}
         </ScrollView>
@@ -65,15 +70,19 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: "white"
   },
+  historyItemContainer: {
+    marginRight: 16
+  },
   historyItem: {
     height: 66,
     width: 66,
     borderRadius: 60,
-    borderWidth: 3,
-    borderColor: "red"
+    borderWidth: 3
   },
-  historyItemContainer: {
-    marginRight: 16
+  historyItemActive: {
+    borderColor: Colors.red
+  },
+  historyItemNotActive: {
+    borderColor: Colors.gray
   }
-
 });
