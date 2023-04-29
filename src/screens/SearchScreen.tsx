@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
     marginLeft: DataHelper.getWidth() * 0.003
   },
   bigImage: {
-    width: DataHelper.getWidth() * 0.66,
-    height: DataHelper.getWidth() * 0.66,
+    width: DataHelper.getWidth() * 0.663,
+    height: DataHelper.getWidth() * 0.663,
     marginTop: DataHelper.getWidth() * 0.003,
     marginRight: DataHelper.getWidth() * 0.003
   },
@@ -85,13 +85,13 @@ const styles = StyleSheet.create({
   },
   bottomLeft: {
     width: DataHelper.getWidth() * 0.66,
-    height: DataHelper.getWidth() * 0.66
+    height: DataHelper.getWidth() * 0.66,
+    marginRight: DataHelper.getWidth() * 0.003,
+    marginLeft: DataHelper.getWidth() * 0.006
   },
   bottomRight: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    flexWrap: "wrap"
   }
-
 });
