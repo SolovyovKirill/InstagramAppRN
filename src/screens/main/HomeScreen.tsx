@@ -1,16 +1,16 @@
 import React from "react";
-import { IconSvgLogo } from "../assets/icons/IconSvgLogo";
-import { IconSvgPlus } from "../assets/icons/IconSvgPlus";
-import { IconSvgFavourite } from "../assets/icons/IconSvgFavourite";
-import { IconSvgMessenger } from "../assets/icons/IconSvgMessenger";
+import { IconSvgLogo } from "../../assets/icons/IconSvgLogo";
+import { IconSvgPlus } from "../../assets/icons/IconSvgPlus";
+import { IconSvgFavourite } from "../../assets/icons/IconSvgFavourite";
+import { IconSvgMessenger } from "../../assets/icons/IconSvgMessenger";
 import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
-import { AgEnum, Text } from "../components/ui/Text";
-import { TextHelper } from "../helpers/TextHelper";
-import { PostCard } from "../components/PostCard";
-import { HistoryData } from "../store/HistoryData";
-import { Colors } from "../styles/Colors";
-import { HistoryHelper } from "../helpers/HistoryHelper";
-import { IHistory } from "../types/HistoryTypes";
+import { AgEnum, Text } from "../../components/ui/Text";
+import { TextHelper } from "../../helpers/TextHelper";
+import { PostCard } from "../../components/PostCard";
+import { HistoryData } from "../../store/HistoryData";
+import { Colors } from "../../styles/Colors";
+import { HistoryHelper } from "../../helpers/HistoryHelper";
+import { IHistory } from "../../types/HistoryTypes";
 
 export const HomeScreen = () => {
   return (

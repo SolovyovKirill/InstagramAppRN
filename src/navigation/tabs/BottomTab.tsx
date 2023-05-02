@@ -1,11 +1,17 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Screens } from "../screens/Screens";
-import { HomeScreen } from "../../screens/HomeScreen";
-import { SearchScreen } from "../../screens/SearchScreen";
+import { HomeScreen } from "../../screens/main/HomeScreen";
+import { SearchScreen } from "../../screens/main/SearchScreen";
 import { IconSvgBottomHome } from "../../assets/bottomTab/IconSvgBottomHome";
 import { IconSvgBottomSearch } from "../../assets/bottomTab/IconSvgBottomSearch";
 import { IconSvgBottomHomeActive } from "../../assets/bottomTab/IconSvgBottomHomeActive";
+import { IconSvgBottomReels } from "../../assets/bottomTab/IconSvgBottomReels";
+import { IconSvgBottomShop } from "../../assets/bottomTab/IconSvgBottomShop";
+import { IconSvgFavourite } from "../../assets/icons/IconSvgFavourite";
+import { ReelsScreen } from "../../screens/main/ReelsScreen";
+import { NotificationScreen } from "../../screens/main/NotificationScreen";
+import { ProfileScreen } from "../../screens/main/ProfileScreen";
 
 export const BottomTab = () => {
   const Tab = createBottomTabNavigator();
@@ -31,28 +37,28 @@ export const BottomTab = () => {
       />
       <Tab.Screen
         name={Screens.REELS}
-        component={HomeScreen}
+        component={ReelsScreen}
         options={{
-          tabBarIcon: ({focused}) => {
-            return focused ? <IconSvgBottomHomeActive/> : <IconSvgBottomHome/>
+          tabBarIcon: ({}) => {
+            return <IconSvgBottomReels/>
           }
         }}
       />
       <Tab.Screen
         name={Screens.NOTIFICATION}
-        component={HomeScreen}
+        component={NotificationScreen}
         options={{
-          tabBarIcon: ({focused}) => {
-            return focused ? <IconSvgBottomHomeActive/> : <IconSvgBottomHome/>
+          tabBarIcon: ({}) => {
+            return <IconSvgFavourite/>
           }
         }}
       />
       <Tab.Screen
         name={Screens.PROFILE}
-        component={HomeScreen}
+        component={ProfileScreen}
         options={{
-          tabBarIcon: ({focused}) => {
-            return focused ? <IconSvgBottomHomeActive/> : <IconSvgBottomHome/>
+          tabBarIcon: ({}) => {
+            return <IconSvgBottomSearch/>
           }
         }}
       />

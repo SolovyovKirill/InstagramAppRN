@@ -7,6 +7,7 @@ export enum AgEnum {
   H1 = "h1",
   SUBTITLE = "SUBTITLE",
   SUBTITLE_STRONG = "SUBTITLE_STRONG",
+  BUTTON = "BUTTON",
 }
 
 interface IText extends TextProps {
@@ -44,6 +45,11 @@ const styles = StyleSheet.create({
   [AgEnum.SUBTITLE]: {
     fontSize: 12,
     lineHeight: 22
+  },
+  [AgEnum.BUTTON]: {
+    fontSize: 16,
+    lineHeight: 22,
+    fontWeight: "600"
   },
   [AgEnum.SUBTITLE_STRONG]: {
     fontSize: 13,
