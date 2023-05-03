@@ -4,15 +4,39 @@ import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-nat
 import { Colors } from "../../styles/Colors";
 import { Button } from "../../components/ui/Button";
 import { DataHelper } from "../../helpers/DataHelper";
+import { launchImageLibrary } from "react-native-image-picker";
+
+interface IPhoto {
+  uri: string;
+}
 
 const exAvatar = "https://pbs.twimg.com/profile_images/1498641868397191170/6qW2XkuI_400x400.png";
 
 export const ProfileScreen = () => {
-  const [photos, setPhotos] = useState<any>([]);
+  const [photos, setPhotos] = useState<IPhoto[]>([]);
 
   const setPhoto = () => {
-    const array = [...Array(6)].map((_) => ({ image: exAvatar }));
+    const array = [...Array(6)].map((_) => ({ uri: exAvatar }));
     setPhotos(array);
+  };
+
+  const addPhoto = async () => {
+    const result = await launchImageLibrary({ mediaType: "mixed" });
+
+    if (result.assets) {
+      const addedPhotos = result.assets?.map(i => ({ uri: i.uri! })) || [];
+      setPhotos((prevState) => [...prevState, ...addedPhotos]);
+
+      const formData = new FormData();
+
+      const sendFileData = result.assets.map(item => ({
+        type: item.type,
+        name: item.fileName,
+        uri: item.uri
+      }));
+
+      formData.append("file", sendFileData);
+    }
   };
 
   useEffect(() => {
@@ -31,15 +55,14 @@ export const ProfileScreen = () => {
 
         <Text Ag={AgEnum.SUBTITLE}>Developer</Text>
 
-        <Button title={"Загрузить фото"} onPress={() => {
-        }} />
+        <Button title={"Загрузить фото"} onPress={addPhoto} />
 
       </View>
       <View style={styles.photoContainer}>
-        {photos?.map((item: any, index: number) => (
+        {photos?.map((item, index: number) => (
           <TouchableOpacity key={index}>
             <Image style={styles.smallImage}
-                   source={{ uri: item.image }} />
+                   source={{ uri: item.uri }} />
           </TouchableOpacity>
         ))}
       </View>
