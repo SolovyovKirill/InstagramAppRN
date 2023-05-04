@@ -4,7 +4,7 @@ import { HomeScreen } from "../../screens/main/HomeScreen";
 import { Screens } from "../screens/Screens";
 import { BottomTab } from "../tabs/BottomTab";
 
-export const AppStack = () => {
+export const MainStack = () => {
   const Stack = createNativeStackNavigator();
 
   return (
