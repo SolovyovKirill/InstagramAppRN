@@ -27,7 +27,7 @@ interface IInput {
   shadow?: boolean;
 }
 
-const Input = ({
+export const Input = ({
                  label,
                  placeholder,
                  value,
@@ -110,9 +110,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingRight: 16,
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.light_gray,
+    borderColor: Colors.gray,
     borderWidth: 1,
-    elevation: 2
+    borderRadius: 8,
   },
   shadowInput: {
     shadowOffset: { width: 0, height: 2 },
