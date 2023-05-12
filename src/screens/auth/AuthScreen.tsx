@@ -6,32 +6,24 @@ import { Colors } from "../../styles/Colors";
 import { Button } from "../../components/ui/Button";
 import { useForm } from "react-hook-form";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { observer } from "mobx-react";
+import { useRootStore } from "../../base/hooks/useRootStore";
 
 enum EAuthForm {
   USERNAME = "username",
   PASSWORD = "password"
 }
 
-export const AuthScreen = () => {
+export const AuthScreen = observer(() => {
+  const {authStore} = useRootStore();
   const { watch, setValue, register, formState: { errors }, handleSubmit } = useForm();
 
   const handleChange = (value: string, name: string) => {
     setValue(name, value);
   };
 
-  const saveUserToken = async (token: string) => {
-    try {
-      console.log('Save 123')
-      await AsyncStorage.setItem("@token", token);
-    } catch (e) {
-      console.log('Error', e)
-    }
-  };
-
   const sendData = (data: any) => {
-    if (data.password.length > 5) {
-      saveUserToken("TOKENASDASD");
-    }
+    authStore.login(data)
   };
 
   useEffect(() => {
@@ -63,7 +55,7 @@ export const AuthScreen = () => {
       </View>
     </View>
   );
-};
+});
 
 
 export const styles = StyleSheet.create({

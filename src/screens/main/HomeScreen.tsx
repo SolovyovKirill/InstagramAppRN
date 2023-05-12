@@ -7,7 +7,7 @@ import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from "react-nat
 import { AgEnum, Text } from "../../components/ui/Text";
 import { TextHelper } from "../../helpers/TextHelper";
 import { PostCard } from "../../components/PostCard";
-import { HistoryData } from "../../store/HistoryData";
+import { HistoryData } from "../../modules/history/HistoryData";
 import { Colors } from "../../styles/Colors";
 import { HistoryHelper } from "../../helpers/HistoryHelper";
 import { IHistory } from "../../types/HistoryTypes";
